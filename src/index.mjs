@@ -7,7 +7,7 @@ const HOST = '0.0.0.0';
 const app = express();
 
 app.get("/version", (_, res) => {
-    res.json({ version: 2.1 });
+    res.json({ version: 3.3 });
 });
 app.use("/person", personRoutes);
 
