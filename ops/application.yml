@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-application-joelkube
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Kasacka/joelkube.git
+    targetRevision: HEAD
+    path: ./ops
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: joelkube
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true

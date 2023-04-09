@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: joelkube-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: joelkube-app
+  template:
+    metadata:
+      labels:
+        app: joelkube-app
+    spec:
+      containers:
+      - name: webserver
+        image: kasacka/joelkube:1.0
+        ports:
+        - containerPort: 8080
